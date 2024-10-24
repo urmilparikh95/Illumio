@@ -92,8 +92,8 @@ def main():
             if len(keywords) < max(dstport_column_index, protocol_column_index) + 1:
                 continue
 
-            dstport = keywords[dstport_column_index]
-            protocol = protocol_map[keywords[protocol_column_index]]
+            dstport = keywords[dstport_column_index].strip()
+            protocol = protocol_map[keywords[protocol_column_index].strip()]
 
             # Send data to log processor
             log_processor.add_data(dstport, protocol)
