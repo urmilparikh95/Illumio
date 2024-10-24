@@ -10,8 +10,16 @@
 * Assumption: Tags are alphanumeric and not just a number.
 * Assumption: Protocol number is valid. A dictionary is created from the csv file downloaded from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. That dict is used for protocol keyword lookup from the protocol number.
 * To test for big code size I wrote a simple python script to create a mock log and csv file.
-* The input file is read using python's line read feature in order to load whole the file in memory.
 
+# Implementation
+* The main function accepts input and reads the log and csv files.
+* It loops through each log file line to extract `dstport` and `protocol`.
+* The input file is read using python's line read feature in order to load whole the file in memory.
+* The protocol is converted to keyword using protocol number to keyword map.
+* Create a new LogProcessor class object which has function to accept data and update counts accordingly.
+* The dstport and protocol info is passed to the function call for LogProcessor which has a hashmap to store key: a tuple between dstport and protocol. It updates the count as it encounters each combinations.
+* Also lookup and update count for tags for each combination.
+* Finally print the counts in output files.
 
 # Steps to run
 * To run the program run `python3 src/main.py` with additional params.
